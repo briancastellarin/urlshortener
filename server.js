@@ -52,7 +52,7 @@ app.post('/api/shorturl', (req, res) => {
       })
 
       if (!finded) {
-        const index = 1 + (url.length * 2);
+        let index = 1 + url.length + (Math.random() * 100);
         let newUrl = new URLS({ original_url: url, short_url: index.toString() });
         newUrl.save().then(() => {
           res.json({ original_url: url, short_url: index.toString() });
